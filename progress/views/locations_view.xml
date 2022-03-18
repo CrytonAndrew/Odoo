@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_locations_form" model="ir.ui.view">
+        <field name="name">progress.locations.form</field>
+        <field name="model">progress.locations</field>
+        <field name="arch" type="xml">
+            <form string="Progress locations">
+                <sheet>
+                    <group>
+                        <field name="user"/>
+                        <field name="latitude"/>
+                        <field name="longitude"/>
+                        <field name="update_date"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_locations_tree" model="ir.ui.view">
+        <field name="name">progress.locations.tree</field>
+        <field name="model">progress.locations</field>
+        <field name="arch" type="xml">
+            <tree sample="1" multi_edit="1">
+                <field name="user"/>
+                <field name="latitude"/>
+                <field name="longitude"/>
+                <field name="create_date"/>
+                <field name="update_date" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_progress_locations" model="ir.actions.act_window">
+        <field name="name">Locations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">progress.locations</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new locations            
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_locations_root" name="Locations" sequence="30" />
+    <menuitem id="menu_locations" name="Location" parent="menu_progress_report_root" action="action_progress_locations" />
+</odoo>
